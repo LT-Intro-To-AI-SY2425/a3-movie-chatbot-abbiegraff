@@ -252,13 +252,13 @@ def search_pa_list(src: List[str]) -> List[str]:
         ["No answers"] if it finds a match but no answers
     """
     for pattern, action in pa_list:
-        if match(src, pattern):
-            result = action(src)
-            if result:
-                return result
-            else:
-                return ["No answers"]
-    return ["I don't understand"]
+        #print(pattern, src)
+        val = match(pattern, src)
+        #print(val)
+        if val != None:
+            #print("act")
+            result = action(val)
+            return result
 
 
 def query_loop() -> None:
