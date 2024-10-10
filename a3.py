@@ -84,9 +84,9 @@ def title_by_year_range(matches: List[str]) -> List[str]:
     end_year = int(matches[1])
     result = []
     for movie in movie_db:
-        if start_year <= get_year(movie) <= end_year:
+        if get_year(movie) >= start_year and get_year(movie) <= end_year:
             result.append(get_title(movie))
-    return movie 
+    return result 
 
 
 def title_before_year(matches: List[str]) -> List[str]:
@@ -124,7 +124,7 @@ def title_after_year(matches: List[str]) -> List[str]:
     for movie in movie_db:
         if get_year(movie) > year:
             result.append(get_title(movie))
-        return result
+    return result
 
 def director_by_title(matches: List[str]) -> List[str]:
     """Finds director of movie based on title
@@ -258,7 +258,7 @@ def search_pa_list(src: List[str]) -> List[str]:
         if val != None:
             #print("act")
             result = action(val)
-            return result
+    return result
 
 
 def query_loop() -> None:
